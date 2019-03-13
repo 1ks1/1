@@ -17,6 +17,8 @@ else
 			then
 				echo "$S - bad s link"
 				##rm "$S"
+			else
+				echo "$S - OK"
 			fi
 		done
 	else
