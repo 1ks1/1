@@ -11,7 +11,7 @@ then
 	echo "scriptname <dir from> <dir to> <filename for>"
 else
 
-	if [ -d $f_dir ];
+	if [ -d $d_dir ];
 		then
 		find "$f_dir" -name "$f_name" -type f -exec cp -f {} $d_dir \;
 	else
