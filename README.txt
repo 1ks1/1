@@ -38,14 +38,26 @@ color.status
 
 git config --global core.quotepath off
 
+  Чтобы удалить учетку GIT из под WIN:
+Перейдите к: Control Panel -> User Accounts -> Manage your credentials -> Windows Credentials
+В Generic Credentials есть некоторые учетные данные, связанные с Github,
+Нажмите на них и нажмите "Remove".
 
 
 
 ===GIT===
+  Инициализируем папку для Git репозитория. Это нужно сделать только один раз для каждого проекта.
+  Переходим в нужную папку и ..:
 git init
+  Добавляем все новые и измененные файлы:
 git add README.md
-git commit -m "first commit"
+  или
+git add .
+  Помечаем все новые и измененные файлы сообщением (commit)
+git commit -m "comment"
+  Связываем папку с удаленным репозиторием:
 git remote add origin https://github.com/1ks1/1.git
+  Закачиваем код на удаленный репозиторий
 git push -u origin master
 --------- SVN ------------------------
 svn chekaut http://tc.geeksforles.net/svn-repository/
