@@ -60,10 +60,16 @@ git add -f path/to/results/graphs/.gitignore
 git add .
   Помечаем все новые и измененные файлы сообщением (commit)
 git commit -m "comment"
+  Меняем комент в последнем комите
+git commit --amend -m "Новый комментарий"
   Связываем папку с удаленным репозиторием:
 git remote add origin https://github.com/1ks1/1.git
+  Отвязываем так...
+git remote remove origin
   Проверяем подключеные репозитории
 git remote -v
+  Eсли еще подробней то...
+git remote show origin
 
   Закачиваем код на удаленный репозиторий
   Ключ -u используется для того, чтобы установить связь между удаленным репозиторием github и вашей веткой master.
@@ -80,7 +86,20 @@ git pull
 git log
   Получим обновления из удаленого на локальный так..
 git pull
-
+======================================================
+ВЕТКИ BRANCHES
+  Смотрим ветки
+git branch
+  Создаем новую
+git branch <branch-name>
+  Переходим в нее
+git checkout <branch-name>
+  Создаем новую и переходим туда
+git checkout -b <branch-name>
+   Удаляем локальную ветку
+git branch -d <branch-name>
+  Удалим из репза
+git push origin --delete <branch-name>
   
 ======================================================
 
