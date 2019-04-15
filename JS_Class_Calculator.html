@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    class Calc 
+    {
+        constructor(a,b) 
+        {
+            this.a = a;
+            this.b = b;
+        }
+
+        seta(a)
+        {
+            this.a = a;
+        }
+
+        setb(b)
+        {
+            this.b = b;
+        }
+
+        s1() 
+        {
+            return(this.a + this.b);
+        }
+        s2() 
+        {
+            return(this.a - this.b);
+        }
+        s3() 
+        {
+            return(this.a * this.b);
+        }
+        s4() 
+        {
+            return(this.a / this.b);
+        }
+
+    }
+
+    let u = new Calc(3,7);
+    console.log(u.s1().toFixed(1));
+    console.log(u.s2().toFixed(1));
+    console.log(u.s3().toFixed(1));
+    console.log(u.s4().toFixed(1));
+    u.seta(10);
+    u.setb(20);
+    console.log(u.s1().toFixed(1));
+    document.write('<h1>Calc</h1>a='+u.a+'; b= '+u.b+'<br />');
+    document.write('(+) '+u.s1().toFixed(1)+ '<br />');
+    document.write('(-) '+u.s2().toFixed(1)+ '<br />');
+    document.write('(/) '+u.s3().toFixed(1)+ '<br />');
+    document.write('(*) '+u.s4().toFixed(1)+ '<br />');
+    </script>
+
+
+
+</body>
+</html>
