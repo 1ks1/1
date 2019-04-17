@@ -1,20 +1,25 @@
 document.body.innerHTML = '';
 var speed = 5;
-var player_el = document.createElement('div');
-player_el.style.height = '100px';
-player_el.style.width = '100px';
-player_el.style.position = 'absolute';
-player_el.style.backgroundColor = 'green';
-player_el.style.top = '0px';
-player_el.style.left = '0px';
 
-var player_el2 = document.createElement('div');
-player_el2.style.height = '100px';
-player_el2.style.width = '100px';
-player_el2.style.position = 'absolute';
-player_el2.style.backgroundColor = 'red';
-player_el2.style.top = '5px';
-player_el2.style.left = '5px';
+
+function CrEl(col)
+{   
+    player = document.createElement('div');
+    player.id = player;
+    player.style.height = '100px';
+    player.style.width = '100px';
+    player.style.position = 'absolute';
+    player.style.backgroundColor = col;
+    player.style.top = '0px';
+    player.style.left = '0px';
+    document.body.appendChild(player);
+    return player;
+    console.log(player);
+}
+
+player_el = CrEl('rgba(0,255,0,.4)');
+player_el2 = CrEl('rgba(255,0,0,.4)');
+
 
 var keyState = {
     up: false,
@@ -35,8 +40,6 @@ var position2 = {
    top: 0,
    left: 0  
 };
-document.body.appendChild(player_el);
-document.body.appendChild(player_el2);
 
 document.addEventListener('keydown', function(event) {
     if (event.code === 'ArrowDown') {
