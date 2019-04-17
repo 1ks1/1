@@ -12,13 +12,15 @@ function CrEl(col)
     player.style.backgroundColor = col;
     player.style.top = '0px';
     player.style.left = '0px';
+    player.style.borderRadius = '50%';
     document.body.appendChild(player);
     return player;
     console.log(player);
 }
 
-player_el = CrEl('rgba(0,255,0,.4)');
-player_el2 = CrEl('rgba(255,0,0,.4)');
+player_el = CrEl('rgba(0,255,0,.5)');
+player_el2 = CrEl('rgba(255,0,0,.5)');
+player_el3 = CrEl('rgba(0,0,255,.5)');
 
 
 var keyState = {
@@ -26,7 +28,7 @@ var keyState = {
     down: false,
     left: false,
     right: false,
-        up2: false,
+    up2: false,
     down2: false,
     left2: false,
     right2: false
@@ -37,6 +39,10 @@ var position = {
    left: 0  
 };
 var position2 = {
+   top: 0,
+   left: 0  
+};
+var position3 = {
    top: 0,
    left: 0  
 };
@@ -61,6 +67,16 @@ document.addEventListener('keydown', function(event) {
     } else if (event.code === 'KeyD') {
         keyState.right2 = true;
     }
+
+        if (event.code === 'Numpad2') {
+        keyState.down3 = true;
+    } else if (event.code === 'Numpad8') {
+        keyState.up3 = true;
+    } else if (event.code === 'Numpad4') {
+        keyState.left3 = true;
+    } else if (event.code === 'Numpad6') {
+        keyState.right3 = true;
+    }
 })
 
 document.addEventListener('keyup', function(event) {
@@ -83,6 +99,18 @@ document.addEventListener('keyup', function(event) {
     } else if (event.code === 'KeyD') {
         keyState.right2 = false;
     }
+
+
+    if (event.code === 'Numpad2') {
+        keyState.down3 = false;
+    } else if (event.code === 'Numpad8') {
+        keyState.up3 = false;
+    } else if (event.code === 'Numpad4') {
+        keyState.left3 = false;
+    } else if (event.code === 'Numpad6') {
+        keyState.right3 = false;
+    }
+
 })
 
 
@@ -121,6 +149,25 @@ var actionInterval = setInterval(function() {
     }
 
 
+
+
+    if (keyState.up3) {
+        position3.top--;
+    }
+
+    if (keyState.down3) {
+        position3.top++;
+    }
+    
+    if (keyState.left3) {
+        position3.left--;
+    }
+
+    if (keyState.right3) {
+        position3.left++;
+    }
+
+
 });
 
 
@@ -130,4 +177,7 @@ var drawInterval = setInterval(function() {
 
     player_el2.style.top = position2.top + 'px';
     player_el2.style.left = position2.left + 'px';
+
+    player_el3.style.top = position3.top + 'px';
+    player_el3.style.left = position3.left + 'px';
 }, (1000/30));
