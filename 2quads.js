@@ -12,6 +12,7 @@ function CrEl(col,size,radius)
     player.style.backgroundColor = col;
     player.style.top = '0px';
     player.style.left = '0px';
+    player.style.cursor = 'none';
     player.style.borderRadius = radius+'%';
     document.body.appendChild(player);
     return player;
@@ -21,7 +22,9 @@ function CrEl(col,size,radius)
 player_el = CrEl('rgba(0,200,0,.5)','100','50');
 player_el2 = CrEl('rgba(255,0,0,.5)','100','50');
 player_el3 = CrEl('rgba(0,0,255,.5)','100','50');
-player_el4 = CrEl('rgba(0,0,0,1)','20','30');
+player_el4 = CrEl('rgba(0,0,0,0.2)','20','30');
+player_el5 = CrEl('rgba(255,0,0,.9)','15','50');
+player_el4.innerHTML = 'please press arrows or AWDS  or (nums 8246)';
 
 var X;
 var Y;
@@ -29,6 +32,8 @@ var rad = -3;
 document.onmousemove = function(e) {
     X = e.clientX;
     Y = e.clientY;
+    player_el5.style.top = Y-5 +'px';
+    player_el5.style.left = X-5 +'px';
 }
 
 
@@ -54,7 +59,7 @@ var timer = setInterval(function(e) {
     player_el4.style.borderRadius = r + '%';
     console.log(parseInt(r));
 
-}, 25)
+}, 30)
 
 
 var keyState = {
