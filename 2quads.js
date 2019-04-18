@@ -1,26 +1,60 @@
-document.body.innerHTML = '';
-var speed = 5;
+document.body.innerHTML = '<b style="font-size:30px;">right = (A, Arrow right and 6num)<b/>';
+var speed = 10;
 
 
-function CrEl(col)
+function CrEl(col,size,radius)
 {   
     player = document.createElement('div');
     player.id = player;
-    player.style.height = '100px';
-    player.style.width = '100px';
+    player.style.height = size+'px';
+    player.style.width = size+'px';
     player.style.position = 'absolute';
     player.style.backgroundColor = col;
     player.style.top = '0px';
     player.style.left = '0px';
-    player.style.borderRadius = '50%';
+    player.style.borderRadius = radius+'%';
     document.body.appendChild(player);
     return player;
     console.log(player);
 }
 
-player_el = CrEl('rgba(0,255,0,.5)');
-player_el2 = CrEl('rgba(255,0,0,.5)');
-player_el3 = CrEl('rgba(0,0,255,.5)');
+player_el = CrEl('rgba(0,200,0,.5)','100','50');
+player_el2 = CrEl('rgba(255,0,0,.5)','100','50');
+player_el3 = CrEl('rgba(0,0,255,.5)','100','50');
+player_el4 = CrEl('rgba(0,0,0,1)','20','30');
+
+var X;
+var Y;
+var rad = -3;
+document.onmousemove = function(e) {
+    X = e.clientX;
+    Y = e.clientY;
+}
+
+
+var timer = setInterval(function(e) {
+    y = parseInt(player_el4.style.top,10);
+    ym = y +(Y-y)/20;
+    yy = parseInt(ym);
+    player_el4.style.top = yy + 'px';
+    x = parseInt(player_el4.style.left,10);
+    xm = x +(X-x)/20;
+    xx = parseInt(xm);
+    player_el4.style.left = xx + 'px';
+    r = player_el4.style.borderRadius;
+    r = parseInt(r);
+    if (r < 3) {
+        rad = 3;
+    }
+    if(r > 49){
+        rad = -3;
+    } 
+
+    r = r + rad;
+    player_el4.style.borderRadius = r + '%';
+    console.log(parseInt(r));
+
+}, 25)
 
 
 var keyState = {
