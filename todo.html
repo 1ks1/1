@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        .todo {
+            width: 500px;
+            border: 1px solid lightgrey;
+            border-radius: 10px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+
+        .todo h1 {
+            text-align: center;
+        }
+
+        .todo .item-text {
+            display: inline-block;
+            width: 300px;
+        }
+
+        .todo .edit-input {
+            display: inline-block;
+            width: 296px;
+        }
+
+    </style>
+
+    <div class="todo" id="todoVue">
+        <h1>Todo List</h1>
+
+        <ul class="todo-list js_todo_list">
+            <todo-item 
+                v-for="(item, key) in list" 
+                :key="key"
+                :index="key"
+                :item="item"
+                @remove="remove($event)"
+                @apply="apply(key, $event)"></todo-item>
+        </ul>
+        <div class="add-section">
+            <input type="text" v-model="add_val" @keyup.enter="add">
+            <button type="button" @click="add">Add</button>
+        </div>
+    </div>
+
+        
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script type="text/template" id="todoitem">
+    
+    </script>
+    <script>
+        console.time('Vue');
+        
+        Vue.component('todo-item', {
+            template: `
+                <li>
+                    <input type="text" class="edit-input" v-model="edit_val" v-if="edit" @keyup.enter="apply(index)">
+                    <span class="item-text" v-else>{{ item }}</span>
+                    <button type="button" @click="remove(index)">X</button>
+                    <button type="button" @click="apply(index)" v-if="edit">Apply</button>
+                    <button type="button" @click="edit_method" v-else>Edit</button>
+                </li>         
+            `,
+            props: ['index', 'item'],
+            data: function() {
+                return {
+                    edit_val: '',
+                    edit: false
+                }
+            },
+            methods: {
+                remove: function(key) {
+                    this.$emit('remove', key);
+                },
+                apply: function() {
+                    this.edit = false;
+                    this.$emit('apply', this.edit_val);
+                },
+                edit_method: function() {
+                    this.edit = true;
+                    this.edit_val = this.item;
+                }
+            },
+            computed: {}
+        });
+
+
+        var todo_app = new Vue({
+            el: '#todoVue',
+            data: function() {
+                return {
+                    add_val: '',
+                    list: JSON.parse(localStorage.todoVue || '[]')
+                }
+            },
+            methods: {
+                add: function() {
+                    console.time('Vue add')
+                    this.list.push(this.add_val);
+                    this.add_val = '';
+                    console.timeEnd('Vue add')
+                },
+                remove: function(index) {
+                    this.list.splice(index, 1);
+                },
+                apply: function(index, val) {
+                    this.$set(this.list, index, val);
+                }
+            },
+            watch: {
+                list: function() {
+                    localStorage.todoVue = JSON.stringify(this.list);
+                }
+            }
+
+        });
+
+        console.timeEnd('Vue');
+    </script>
+</body>
+</html>
