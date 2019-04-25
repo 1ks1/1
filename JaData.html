@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+
+<script>
+    var d = new Date();
+    document.write("1)"+d);
+    document.write(" <hr />");
+    document.write("2) "+d.getDate()+" day of month<br />");
+    document.write("3) "+(d.getMonth()+1)+ " month<br />");
+    document.write("4) "+d.getFullYear()+" Year<br />");
+    function daysInMonth(month, year) {
+    return new Date(year, month, 0).getDate();
+    }
+    document.write("5) "+daysInMonth(4, 2019)+" in this month<br />");
+    document.write("6) "+d.getDay()+" day of w<br />");
+    d.setDate(1);
+    d.setMonth(0);
+    d.setFullYear(1);
+    document.write("7)"+d.toDateString()+" <br />");
+    d = new Date();
+    document.write("8)"+d.toDateString()+" <br />");
+    document.write("9) "+daysInMonth(3, 2019)+" in past month<br />");
+   
+var month=d.getMonth();
+var arr=[
+   'Январь',
+   'Февраль',
+   'Март',
+   'Апрель',
+   'Май',
+   'Июнь',
+   'Июль',
+   'Август',
+   'Сентябрь',
+   'Ноябрь',
+   'Декабрь',
+];
+document.write("10)" + arr[month]+ "<br />");
+var w=d.getMonth();
+var arr=[
+   'Понедельник',
+   'Вторник',
+   'Среда',
+   'Четверг',
+   'Пятница',
+   'Суббота',
+   'воскресенье',
+];
+document.write("11)" + arr[w]+ "<br />");
+
+
+</script>
+
+<div>
+    <h2>Task DATA</h2><br  />
+    <pre>
+    1 Что такое Date
+    2 Узнать текущий день месяца
+    3 Узнать текущий номер месяца
+    4 Узнать текущий год
+    5 Узнать количество дней в текущем месяце
+    6 Узнать день недели
+    7 Установить новую дату
+    8 Узнать количество дней в след. месяце
+    9 Узнать кол. дней в пред. месяце
+    10 Вывести Название месяца
+    11 Вывести Название дня недели
+    </pre>
+</div>
+
+
+
+
+
+<pre style= "color:rgba(0,0,0, .5);">
+        Методы	Описание
+        Date()	Возвращает текущую дату и время
+        getDate()	Используется для получения текущего дня месяца
+        getDay()	Используется для получения текущего дня недели
+        getFullYear()	Возвращает четырехзначное число текущего года
+        getHours()	Возвращает время в часах ( 0-23)
+        getMilliseconds()	Возвращает миллисекунды ( 0-999)
+        getMinutes()	Возвращает текущие минуты ( 0-59)
+        getMonth()	Возвращает текущий месяц ( 0-11)
+        getSeconds()	Возвращает секунды ( 0-59)
+        getTime()	Возвращает число миллисекунд с 1-го января 1970 года
+        getTimezoneOffset()	Возвращает разницу между местным временем и GMT
+        getUTCDate()	Возвращает день месяца (1-31) в соответствии с UTC
+        getUTCDay()	Возвращает день недели (0-6) в соответствии с UTC
+        getUTCMonth()	Возвращает месяц (0-11) в соответствии с UTC
+        getUTCFullYear()	Возвращает число года в соответствии с UTC
+        getUTCHours()	Возвращает время в часах (0-23) согласно UTC
+        getUTCMinutes()	Возвращает минуты (0-59) согласно UTC
+        getUTCSeconds()	Возвращает секунды (0-59) согласно UTC
+        getUTCMilliseconds()	Возвращает миллисекунды согласно UTC
+        setDate()	Устанавливает текущий день месяца (1-31)
+        setFullYear()	Устанавливает текущий год
+        setHours()	Устанавливает время в часах (0-23)
+        setMinutes()	Устанавливает минуты (0-59)
+        setMonth()	Устанавливает месяц (0-11)
+        setSeconds()	Устанавливает секунды (0-59)
+        setUTCHours()	Устанавливает время в часах (0-23) согласно UTC
+        setUTCMinutes()	Устанавливает минуты (0-59) согласно UTC стандарту
+        setUTCSeconds()	Устанавливает секунды (0-59) согласно UTC стандарту
+        toDateString()	Возвращает текущую дату
+        toLocaleDateString()	Возвращает дату согласно местному времени
+        toLocaleTimeString()	Возвращает время согласно местному времени
+        toLocaleString()	Возвращает дату и время согласно местному времени
+        toString()	Возвращает дату, время и часовой пояс
+        toTimeString()	Возвращает время и часовой пояс
+        toUTCString()	Возвращает время согласно UTC стандарту
+</pre>
+    
+</body>
+</html>
